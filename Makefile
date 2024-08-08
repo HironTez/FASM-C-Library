@@ -4,8 +4,8 @@ CC = fasm
 # Directories and files
 MAIN = main
 LIB_DIR = asmlib
-LIB_SRC = $(wildcard ./$(LIB_DIR)/*.asm)
-LIB_OBJ = $(wildcard ./$(LIB_DIR)/*.o)
+LIB_SRC = $(wildcard $(LIB_DIR)/*.asm)
+LIB_OBJ = $(wildcard $(LIB_DIR)/*.o)
 
 # Target names
 .PHONY: default compile build run clean
@@ -13,7 +13,7 @@ LIB_OBJ = $(wildcard ./$(LIB_DIR)/*.o)
 default: build run
 
 compile:
-	$(CC) $(LIB_SRC)
+	$(foreach file, $(LIB_SRC), $(CC) $(file);)
 
 # Build rule: assemble all .asm files into a single executable
 build:
