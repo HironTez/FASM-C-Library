@@ -12,12 +12,10 @@ LIB_OBJ = $(wildcard $(LIB_DIR)/*.o)
 
 default: build run
 
-compile:
-	$(foreach file, $(LIB_SRC), $(CC) $(file);)
-
 # Build rule: assemble all .asm files into a single executable
 build:
 	$(CC) ${MAIN}.asm
+	$(foreach file, $(LIB_SRC), $(CC) $(file);)
 	ld ${MAIN}.o $(LIB_OBJ) -o ${MAIN}
  
 # Run rule: execute the compiled program
