@@ -1,11 +1,13 @@
 format ELF64
 
 public fibonacci
+public factorial
 
 section '.data' writable
   char rb 1
 
 section '.fibonacci' executable
+; calculate fibonacci number on the given position
 ; input |
 ; rax: number
 ; return |
@@ -27,8 +29,34 @@ fibonacci:
 
     dec rcx
     jmp .iter
+
   .close:
     mov rax, rbx
     pop rcx
     pop rbx
     ret
+
+section '.factorial' executable
+; calculate factorial of the given number
+; input |
+; rax: number
+; return |
+; rax: factorial number
+factorial:
+  push rbx
+
+  mov rbx, rax
+
+  .iter:
+    cmp rbx, 2
+    jle .close
+
+    dec rbx
+    mul rbx
+    jmp .iter
+
+  .close:
+    pop rbx
+    ret
+    
+

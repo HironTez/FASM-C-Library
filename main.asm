@@ -11,10 +11,14 @@ _start:
   ; call printNumber
   ; call printLine
 
-  mov rax, 15
-  call fibonacci
+  ; mov rax, 15
+  ; call fibonacci
+  ; call printNumber
+  ; call printLine
+
+  mov rax, 5
+  call factorial
   call printNumber
   call printLine
 
   call exit
-
