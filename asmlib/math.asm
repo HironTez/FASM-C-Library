@@ -3,9 +3,6 @@ format ELF64
 public fibonacci
 public factorial
 
-section '.data' writable
-  char rb 1
-
 section '.fibonacci' executable
 ; calculate fibonacci number on the given position
 ; input |
