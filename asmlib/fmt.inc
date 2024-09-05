@@ -3,3 +3,4 @@ extrn printChar
 extrn printLine
 extrn input
 extrn print
+extrn charToNumber

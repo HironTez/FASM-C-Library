@@ -1,10 +1,17 @@
 format ELF64
 
+include './sys.inc'
+
 public printNumber
 public printChar
 public printLine
 public input
 public print
+public charToNumber
+
+section '.data'
+  charToNumberErrorMessage db 'Invalid character', 0
+  charToNumberErrorMessageLength = $ - charToNumberErrorMessage
 
 section '.bss' writable
   char rb 1
@@ -98,3 +105,27 @@ input:
   syscall
   mov byte [rsi + rdx], 0 ; set a null-terminator to the latest byte
   ret
+
+section '.charToNumber' executable
+; convert a character to a number
+; input |
+; rax: character to convert
+; return |
+; rax: converted number
+charToNumber:
+  ; exit if the value is not in the ASCII numeric range 
+  cmp rax, 48
+  jl .error
+  cmp rax, 57
+  jg .error
+
+  ; subtract '0' from the ASCII value to get the number
+  mov r8, 48
+  sub rax, r8
+
+  ret
+
+  .error:
+    mov rax, charToNumberErrorMessage
+    mov rdx, charToNumberErrorMessageLength
+    call exception

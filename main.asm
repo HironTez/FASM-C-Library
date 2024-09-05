@@ -5,7 +5,7 @@ include './asmlib/fmt.inc'
 include './asmlib/sys.inc'
 include './asmlib/math.inc'
 
-section '.data' writable
+section '.data'
   stringLength equ 128
   prompt db 'Enter something: ', 0
   promptLength = $ - prompt
@@ -29,21 +29,24 @@ _start:
   ; call printNumber
   ; call printLine
 
-  ; print the prompting message
-  mov rax, prompt
-  mov rdx, promptLength
-  call print
+  ; ; print the prompting message
+  ; mov rax, prompt
+  ; mov rdx, promptLength
+  ; call print
 
-  ; get user's input
-  mov rax, string
-  mov rdx, stringLength
-  call input
+  ; ; get user's input
+  ; mov rax, string
+  ; mov rdx, stringLength
+  ; call input
 
-  ; print the user's input
-  mov rax, string
-  mov rdx, stringLength
-  call print
+  ; ; print the user's input
+  ; mov rax, string
+  ; mov rdx, stringLength
+  ; call print
 
-  ; call printLine
+  mov rax, 50
+  call charToNumber
+  call printNumber
+  call printLine
 
   call exit
