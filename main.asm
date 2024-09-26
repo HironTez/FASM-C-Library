@@ -34,19 +34,19 @@ _start:
   ; mov rdx, promptLength
   ; call print
 
-  ; ; get user's input
-  ; mov rax, string
-  ; mov rdx, stringLength
-  ; call input
+  ; get user's input
+  mov rax, string
+  mov rdx, stringLength
+  call input
 
-  ; ; print the user's input
-  ; mov rax, string
-  ; mov rdx, stringLength
-  ; call print
+  ; print the user's input
+  mov rax, string
+  mov rdx, stringLength
+  call print
 
-  mov rax, 50
-  call charToNumber
-  call printNumber
-  call printLine
+  ; mov rax, 50
+  ; call charToNumber
+  ; call printNumber
+  ; call printLine
 
   call exit

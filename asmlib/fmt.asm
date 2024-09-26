@@ -103,7 +103,8 @@ input:
   mov rax, 0 ; 0 - read
   mov rdi, 0 ; 0 - stdin
   syscall
-  mov byte [rsi + rdx], 0 ; set a null-terminator to the latest byte
+  add rsi, rax ; move pointer to the position right after latest symbol
+  mov byte [rsi], 0 ; set a null-terminator
   ret
 
 section '.charToNumber' executable
